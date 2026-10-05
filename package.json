@@ -3,7 +3,18 @@
   "version": "2.0.0",
   "private": true,
   "description": "집현전 수호대 — 한글날 학급 협동 게임",
-  "scripts": {"start": "node server.js", "test": "node --test tests/game.test.js", "voices": "node scripts/generate-voices.js"},
-  "dependencies": {"express": "4.22.3", "socket.io": "4.8.1", "qrcode": "1.5.4"},
-  "devDependencies": {"socket.io-client": "4.8.1"}
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/game.test.js",
+    "voices": "node scripts/generate-voices.js",
+    "prestart": "node scripts/export-practice.cjs"
+  },
+  "dependencies": {
+    "express": "4.22.3",
+    "socket.io": "4.8.1",
+    "qrcode": "1.5.4"
+  },
+  "devDependencies": {
+    "socket.io-client": "4.8.1"
+  }
 }

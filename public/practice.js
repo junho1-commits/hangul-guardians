@@ -1,12 +1,12 @@
 'use strict';
-const $=id=>document.getElementById(id),learning=location.pathname==='/learn';
+const $=id=>document.getElementById(id),learning=location.pathname.replace(/\/$/,'')==='/learn'||new URLSearchParams(location.search).get('mode')==='learn';
 let bank=[],questions=[],index=0,correct=0,mistakes=[],answered=false,deadline=0,timer;
 const show=(id,value)=>$(id).hidden=!value;
 function shuffled(values){const out=[...values];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]];}return out;}
 $('modeName').textContent=learning?'학습 모드 · 배우기':'개인 모드 · 혼자 하기';
 $('title').textContent=learning?'차근차근 우리말 익히기':'내 힘으로 우리말 지키기';
 $('description').textContent=learning?'시간 걱정 없이 도움말을 보며 풀어요. 답을 고른 뒤 풀이를 함께 읽어요.':'한 문제에 30초씩, 12문제를 풀어요. 끝나면 틀린 문제를 다시 살펴봐요.';
-async function load(){try{const response=await fetch('/api/practice');if(!response.ok)throw new Error();bank=await response.json();$('loadStatus').textContent='입장 번호 없이 바로 시작할 수 있어요.';$('begin').disabled=false;}catch{$('loadStatus').textContent='문제를 불러오지 못했어요. 다시 불러오기를 눌러 주세요.';const retry=document.createElement('button');retry.className='quiet';retry.textContent='다시 불러오기';retry.onclick=()=>{retry.remove();load();};$('loadStatus').append(retry);}}
+async function load(){try{if(Array.isArray(window.guardianPracticeBank)){bank=window.guardianPracticeBank;}else{const response=await fetch('/api/practice');if(!response.ok)throw new Error();bank=await response.json();}if(!bank.length||!bank.every(q=>Array.isArray(q.options)&&q.options.length===4&&Number.isInteger(q.answer)&&q.answer>=0&&q.answer<4))throw new Error();$('loadStatus').textContent='입장 번호 없이 바로 시작할 수 있어요.';$('begin').disabled=false;}catch{$('loadStatus').textContent='문제를 불러오지 못했어요. 다시 불러오기를 눌러 주세요.';const retry=document.createElement('button');retry.className='quiet';retry.textContent='다시 불러오기';retry.onclick=()=>{retry.remove();load();};$('loadStatus').append(retry);}}
 function start(){clearInterval(timer);const pool=bank.filter(q=>$('category').value==='all'||q.category===$('category').value);questions=learning?pool:shuffled(pool).slice(0,12);index=0;correct=0;mistakes=[];show('setup',false);show('finish',false);show('exercise',true);open();}
 function open(){clearInterval(timer);answered=false;const q=questions[index];$('topic').textContent=q.category;$('progress').textContent=`${index+1} / ${questions.length}`;$('question').textContent=q.question;show('hint',false);$('hint').textContent=q.hint;show('help',learning);show('explanation',false);show('next',false);$('feedback').textContent='알맞은 답을 골라 주세요.';$('options').replaceChildren();
 shuffled(q.options.map((text,choice)=>({text,choice}))).forEach(({text,choice})=>{const button=document.createElement('button');button.className='player-option';button.textContent=text;button.onclick=()=>answer(choice);button.dataset.choice=choice;$('options').append(button);});
@@ -17,3 +17,4 @@ function finish(){show('exercise',false);show('finish',true);$('summary').textCo
 $('begin').onclick=start;$('again').onclick=start;$('help').onclick=()=>show('hint',$('hint').hidden);
 $('next').onclick=()=>{index++;if(index===questions.length)finish();else open();};
 $('quit').onclick=()=>{clearInterval(timer);show('exercise',false);show('setup',true);};load();
+

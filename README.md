@@ -29,3 +29,4 @@ npm test: 단체 놀이 규칙 8개 검사.
 node tests/modes-smoke.cjs: 세 가지 놀이, 도움말, 시간 종료, 결과, 다시 풀기, 단체 진행, 휴대기기 화면 검사.
 npm run voices: Typecast로 대사를 다시 만들 때 사용하며 TYPECAST_API_KEY와 인터넷이 필요하고 사용량을 소비합니다.
 
+배우기·혼자 하기는 저장된 public/practice-bank.js를 읽으므로 이전 실행 서버에서도 작동합니다. questions.js를 수정하면 node scripts/export-practice.cjs로 갱신하세요. 실행하기.bat과 npm start는 시작할 때 자동 갱신합니다.

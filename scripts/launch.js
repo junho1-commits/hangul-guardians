@@ -1,4 +1,5 @@
 'use strict';
+require('./export-practice.cjs');
 const {spawn,execFile}=require('node:child_process');
 const path=require('node:path');
 const openBrowser=()=>execFile('powershell.exe',['-NoProfile','-Command',"Start-Process 'http://localhost:3000/'"],{windowsHide:true},error=>{if(error)console.log('브라우저에서 http://localhost:3000/ 를 열어 주세요.');});
@@ -11,4 +12,5 @@ async function main(){
   process.on('SIGINT',()=>child.kill('SIGINT'));process.on('SIGTERM',()=>child.kill('SIGTERM'));
 }
 main();
+
 
