@@ -1,0 +1,128 @@
+{
+  "provider": "Typecast",
+  "model": "ssfm-v30",
+  "voices": {
+    "narrator": {
+      "id": "tc_5c789c34dabcfa0008b0a390",
+      "name": "지영"
+    },
+    "sejong": {
+      "id": "tc_5fe06471a9f79e8f959be96f",
+      "name": "성호"
+    },
+    "ju": {
+      "id": "tc_61f0859907085fc68561c9a1",
+      "name": "지훈"
+    },
+    "boss": {
+      "id": "tc_5c547544fcfee90007fed455",
+      "name": "찬구"
+    }
+  },
+  "clips": {
+    "intro-01": {
+      "file": "/audio/intro-01.wav",
+      "duration": 5.35,
+      "hash": "4392cffdc38606c02952e3c4d66974ef822c2c8acff15fe049dee4295a0d9d0b",
+      "text": "누구나 마음을 글로 전할 수 있도록. 세종대왕이 만든 소중한 글자, 한글.",
+      "role": "narrator",
+      "voice": "지영"
+    },
+    "intro-02": {
+      "file": "/audio/intro-02.wav",
+      "duration": 4.6,
+      "hash": "dffc76959295506cbfa6354d0354d7df68bcf5954f1e467dbf432eb359ba3ead",
+      "text": "그런데 오늘, 집현전에 수상한 먹물이 번지기 시작했습니다!",
+      "role": "narrator",
+      "voice": "지영"
+    },
+    "intro-03": {
+      "file": "/audio/intro-03.wav",
+      "duration": 8.6,
+      "hash": "a0e462fee427a467941b849a8af0a0ace5778b58dcc7b70cf9bdf87ff1981282",
+      "text": "크하하! 글자를 뒤섞고, 말의 뜻을 지워 버리겠다! 훈민정음은 이제 내 것이다!",
+      "role": "boss",
+      "voice": "찬구"
+    },
+    "intro-04": {
+      "file": "/audio/intro-04.wav",
+      "duration": 4.9,
+      "hash": "51d5ddc6eb13ecd106062da912f727d5e4740cb4b541def17fbaa679921c4110",
+      "text": "멈추어라! 백성이 마음을 전할 글자다. 그 뜻까지 빼앗기게 둘 수는 없다!",
+      "role": "sejong",
+      "voice": "성호"
+    },
+    "intro-05": {
+      "file": "/audio/intro-05.wav",
+      "duration": 5,
+      "hash": "a1ebec42f58c1a14e268de870ea4edbff76185706f2c165d0ffc7c0e95ee9fbc",
+      "text": "저도 함께하겠습니다. 우리 말과 글을 지키는 힘은, 함께 배우고 쓰는 우리에게 있습니다!",
+      "role": "ju",
+      "voice": "지훈"
+    },
+    "intro-06": {
+      "file": "/audio/intro-06.wav",
+      "duration": 4.85,
+      "hash": "2c277d1f3bf03c02c004a0db58ef6fb2efcec8517e98ccd93391190207ec7a96",
+      "text": "흥! 너희 둘만으로 나를 막을 수 있을까?",
+      "role": "boss",
+      "voice": "찬구"
+    },
+    "intro-07": {
+      "file": "/audio/intro-07.wav",
+      "duration": 5.45,
+      "hash": "89005e4e2221ab5f495ba12bfd0ded2c456cdccfa81c90b3d5967b474dc81616",
+      "text": "한글 지킴이여! 여러분의 슬기를 모아 주세요. 바른 말과 글이 우리의 힘이 됩니다!",
+      "role": "sejong",
+      "voice": "성호"
+    },
+    "intro-08": {
+      "file": "/audio/intro-08.wav",
+      "duration": 6.25,
+      "hash": "311b7a274647dfbf3c9ac9225994854672ed3c63b209241657f3f7100ef62d88",
+      "text": "답을 맞히면 함께 먹물을 지웁니다. 어려울 때는 서로 도움말을 나누세요. 우리 반 모두가 한글 지킴이입니다!",
+      "role": "ju",
+      "voice": "지훈"
+    },
+    "intro-09": {
+      "file": "/audio/intro-09.wav",
+      "duration": 5.15,
+      "hash": "7eb3d5ece8e2d8b6dae782721f13e319823b70ce65865d86c183730fa9a0bf38",
+      "text": "혼자서는 작은 빛. 함께라면 큰 힘! 한글 지킴이, 지금 출발합니다!",
+      "role": "narrator",
+      "voice": "지영"
+    },
+    "skill-sejong": {
+      "file": "/audio/skill-sejong.wav",
+      "duration": 2.7,
+      "hash": "2890580473a366292e83d3ee38dbfb91ba2eb9338a3864a28d75663621f8f183",
+      "text": "세종의 글자 힘! 나랏말싸미!",
+      "role": "sejong",
+      "voice": "성호"
+    },
+    "skill-ju": {
+      "file": "/audio/skill-ju.wav",
+      "duration": 2.05,
+      "hash": "a1c5e554b1f1c666f97ba3d5b6b7720088efa5938bafe09d5e10ae6224fa324f",
+      "text": "주시경의 지키는 힘! 말모이!",
+      "role": "ju",
+      "voice": "지훈"
+    },
+    "victory": {
+      "file": "/audio/victory.wav",
+      "duration": 4.8,
+      "hash": "ba07c83d9448afe0db773d5a94322a04cdca4f05656fe8e7f769ff796e5755ef",
+      "text": "우리 반의 슬기로 훈민정음을 지켜 냈습니다! 한글 지킴이, 모두 잘했어요!",
+      "role": "narrator",
+      "voice": "지영"
+    },
+    "retry": {
+      "file": "/audio/retry.wav",
+      "duration": 4.3,
+      "hash": "1886677418f155099f367f60e1ba20d2f67c6222f9add6a1baf0741e68b544f2",
+      "text": "괜찮습니다. 틀린 문제의 풀이를 함께 살펴보고, 다시 도전해 봅시다!",
+      "role": "ju",
+      "voice": "지훈"
+    }
+  }
+}

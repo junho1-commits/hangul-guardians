@@ -1,0 +1,107 @@
+{
+  "title": "한글 지킴이",
+  "scenes": [
+    {
+      "id": "intro-01",
+      "speaker": "이야기꾼",
+      "role": "narrator",
+      "scene": "peace",
+      "text": "누구나 마음을 글로 전할 수 있도록. 세종대왕이 만든 소중한 글자, 한글.",
+      "emotion": "normal"
+    },
+    {
+      "id": "intro-02",
+      "speaker": "이야기꾼",
+      "role": "narrator",
+      "scene": "danger",
+      "text": "그런데 오늘, 집현전에 수상한 먹물이 번지기 시작했습니다!",
+      "emotion": "toneup"
+    },
+    {
+      "id": "intro-03",
+      "speaker": "먹물 도깨비",
+      "role": "boss",
+      "scene": "boss",
+      "text": "크하하! 글자를 뒤섞고, 말의 뜻을 지워 버리겠다! 훈민정음은 이제 내 것이다!",
+      "emotion": "angry"
+    },
+    {
+      "id": "intro-04",
+      "speaker": "세종대왕",
+      "role": "sejong",
+      "scene": "sejong",
+      "text": "멈추어라! 백성이 마음을 전할 글자다. 그 뜻까지 빼앗기게 둘 수는 없다!",
+      "emotion": "toneup"
+    },
+    {
+      "id": "intro-05",
+      "speaker": "주시경 선생님",
+      "role": "ju",
+      "scene": "ju",
+      "text": "저도 함께하겠습니다. 우리 말과 글을 지키는 힘은, 함께 배우고 쓰는 우리에게 있습니다!",
+      "emotion": "normal"
+    },
+    {
+      "id": "intro-06",
+      "speaker": "먹물 도깨비",
+      "role": "boss",
+      "scene": "challenge",
+      "text": "흥! 너희 둘만으로 나를 막을 수 있을까?",
+      "emotion": "angry"
+    },
+    {
+      "id": "intro-07",
+      "speaker": "세종대왕",
+      "role": "sejong",
+      "scene": "summon",
+      "text": "한글 지킴이여! 여러분의 슬기를 모아 주세요. 바른 말과 글이 우리의 힘이 됩니다!",
+      "emotion": "toneup"
+    },
+    {
+      "id": "intro-08",
+      "speaker": "주시경 선생님",
+      "role": "ju",
+      "scene": "team",
+      "text": "답을 맞히면 함께 먹물을 지웁니다. 어려울 때는 서로 도움말을 나누세요. 우리 반 모두가 한글 지킴이입니다!",
+      "emotion": "happy"
+    },
+    {
+      "id": "intro-09",
+      "speaker": "이야기꾼",
+      "role": "narrator",
+      "scene": "title",
+      "text": "혼자서는 작은 빛. 함께라면 큰 힘! 한글 지킴이, 지금 출발합니다!",
+      "emotion": "toneup"
+    }
+  ],
+  "effects": [
+    {
+      "id": "skill-sejong",
+      "speaker": "세종대왕",
+      "role": "sejong",
+      "text": "세종의 글자 힘! 나랏말싸미!",
+      "emotion": "toneup"
+    },
+    {
+      "id": "skill-ju",
+      "speaker": "주시경 선생님",
+      "role": "ju",
+      "text": "주시경의 지키는 힘! 말모이!",
+      "emotion": "toneup"
+    },
+    {
+      "id": "victory",
+      "speaker": "이야기꾼",
+      "role": "narrator",
+      "text": "우리 반의 슬기로 훈민정음을 지켜 냈습니다! 한글 지킴이, 모두 잘했어요!",
+      "emotion": "happy"
+    },
+    {
+      "id": "retry",
+      "speaker": "주시경 선생님",
+      "role": "ju",
+      "text": "괜찮습니다. 틀린 문제의 풀이를 함께 살펴보고, 다시 도전해 봅시다!",
+      "emotion": "normal"
+    }
+  ]
+}
