@@ -10,7 +10,7 @@ async function main(){
   browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
   const page=await browser.newPage({viewport:{width:1440,height:900}});
   await page.addInitScript(()=>{window.voiceErrors=0;window.addEventListener('voice-error',()=>window.voiceErrors++);});
-  await page.goto('http://127.0.0.1:3106/host');await page.waitForFunction(()=>introAssetsReady&&credentials);
+  await page.goto('http://127.0.0.1:3106/host?room=1');await page.waitForFunction(()=>introAssetsReady&&credentials);
   await page.locator('#preview').click();await page.waitForFunction(()=>guardianSound.voice?.readyState>=2);
   await page.evaluate(()=>{previewStarted=Date.now()-23500;currentScene='';});await page.waitForTimeout(1200);
   await page.screenshot({path:path.join(root,'tests/screenshots/04-intro-hero.png')});

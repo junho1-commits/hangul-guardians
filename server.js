@@ -22,8 +22,8 @@ app.disable('x-powered-by');
 app.get('/api/health',(req,res)=>res.json({app:'jiphyeonjeon-guardians',version:2}));
 app.use(express.json({limit:'8kb'}));
 app.use((req,res,next)=>{res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','same-origin');next();});
-app.get('/host',(req,res)=>res.sendFile(path.join(__dirname,'public/host.html')));
-app.get('/play',(req,res)=>res.sendFile(path.join(__dirname,'public/play.html')));
+app.get('/host',(req,res)=>res.sendFile(path.join(__dirname,req.query.room==='1'?'public/host.html':'public/index.html')));
+app.get('/play',(req,res)=>res.sendFile(path.join(__dirname,req.query.join==='1'||req.query.pin?'public/play.html':'public/index.html')));
 app.get(['/learn','/solo'],(req,res)=>res.sendFile(path.join(__dirname,'public/practice.html')));
 app.get('/api/practice',(req,res)=>res.json(require('./questions')));
 app.get('/api/network',(req,res)=>{

@@ -16,7 +16,7 @@ async function main(){
   await waitForServer();
   browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--autoplay-policy=no-user-gesture-required']});
   const host=await browser.newPage({viewport:{width:1440,height:900}});host.on('pageerror',e=>errors.push('host: '+e.message));
-  await host.goto(url+'/host');await host.waitForFunction(()=>document.querySelector('#pin').textContent.length===6);
+  await host.goto(url+'/host?room=1');await host.waitForFunction(()=>document.querySelector('#pin').textContent.length===6);
   const pin=await host.locator('#pin').textContent();
   assert.ok(await host.locator('#qr').evaluate(e=>e.naturalWidth>0));
   await host.screenshot({path:path.join(output,'01-lobby.png')});
