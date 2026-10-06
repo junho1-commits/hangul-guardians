@@ -10,6 +10,8 @@ const QRCode = require('qrcode');
 const {Game} = require('./game');
 const app=express(),server=http.createServer(app),io=new Server(server,{maxHttpBufferSize:16000});
 const rooms=new Map(),port=Number(process.env.PORT||3000);
+const configuredPublicUrl=process.env.PUBLIC_URL||process.env.RENDER_EXTERNAL_URL||'';
+const publicBase=configuredPublicUrl?new URL(configuredPublicUrl).origin:'';
 const intro=JSON.parse(fs.readFileSync(path.join(__dirname,'public/intro-script.json'),'utf8'));
 let manifest={clips:{}};
 try{manifest=JSON.parse(fs.readFileSync(path.join(__dirname,'public/audio/manifest.json'),'utf8'));}catch{}
@@ -25,12 +27,13 @@ app.get('/play',(req,res)=>res.sendFile(path.join(__dirname,'public/play.html'))
 app.get(['/learn','/solo'],(req,res)=>res.sendFile(path.join(__dirname,'public/practice.html')));
 app.get('/api/practice',(req,res)=>res.json(require('./questions')));
 app.get('/api/network',(req,res)=>{
+  if(publicBase)return res.json({urls:[publicBase],port});
   const addresses=Object.values(os.networkInterfaces()).flat().filter(n=>n.family==='IPv4'&&!n.internal).map(n=>n.address);
   const preferred=addresses.filter(a=>!a.startsWith('169.254.'));
   res.json({urls:preferred.map(a=>`http://${a}:${port}`),port});
 });
 app.post('/api/rooms',(req,res)=>{
-  if(!local(req)) return res.status(403).json({error:'교사용 대기실은 이 컴퓨터에서 만들어 주세요.'});
+  if(!publicBase&&!local(req)) return res.status(403).json({error:'교사용 대기실은 이 컴퓨터에서 만들어 주세요.'});
   if(rooms.size>=20) return res.status(429).json({error:'대기실이 너무 많아요. 서버를 다시 실행해 주세요.'});
   let pin;do{pin=String(randomInt(100000,1000000));}while(rooms.has(pin));
   const token=randomBytes(32).toString('hex'),game=new Game(pin,token);
@@ -41,7 +44,7 @@ app.get('/api/qr',async(req,res)=>{
   if(!rooms.has(pin))return res.status(404).send('대기실을 찾을 수 없습니다.');
   let url;try{url=new URL(base);}catch{return res.status(400).send('잘못된 주소');}
   const available=Object.values(os.networkInterfaces()).flat().filter(n=>n.family==='IPv4').map(n=>n.address);
-  if(url.protocol!=='http:'||!available.includes(url.hostname)||Number(url.port||80)!==port) return res.status(400).send('교실 접속 주소를 선택해 주세요.');
+  if(!(publicBase&&url.origin===publicBase)&&!(url.protocol==='http:'&&available.includes(url.hostname)&&Number(url.port||80)===port)) return res.status(400).send('교실 접속 주소를 선택해 주세요.');
   const image=await QRCode.toBuffer(`${url.origin}/play?pin=${pin}`,{width:280,margin:2,color:{dark:'#101c30',light:'#ffffff'}});
   res.type('png').send(image);
 });

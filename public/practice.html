@@ -1,5 +1,18 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>한글 지킴이 · 우리말 익히기</title><link rel="stylesheet" href="/style.css"></head><body class="player"><div class="world-bg"></div><div class="world-shade"></div><header class="player-header"><a class="brand" href="/">ㅎ 한글 지킴이</a><a class="quiet" href="/">놀이 고르기</a></header><main class="player-main">
 <section id="setup" class="waiting-card"><div id="modeName" class="eyebrow"></div><h1 id="title"></h1><p id="description"></p><label>배울 내용 <select id="category"><option value="all">모든 내용</option><option>맞춤법</option><option>순우리말</option><option>다듬은 말</option><option>띄어쓰기</option></select></label><p id="loadStatus" role="status">문제를 불러오고 있어요.</p><button id="begin" class="primary" disabled>시작하기 →</button></section>
 <section id="exercise" class="player-question" hidden><div class="question-top"><span id="topic" class="chip"></span><span id="progress"></span><span id="time" class="timer"></span></div><h2 id="question"></h2><button id="help" class="quiet">도움말 보기</button><p id="hint" class="hint" hidden></p><div id="options" class="player-options"></div><p id="feedback" class="answer-status" role="status"></p><div id="explanation" class="explanation" hidden></div><button id="next" class="primary" hidden>다음 문제 →</button><button id="quit" class="text-button">처음부터 다시</button></section>
-<section id="finish" class="waiting-card" hidden><h1>우리말 배움 한 걸음!</h1><p id="summary"></p><div id="review"></div><button id="again" class="primary">다시 풀기</button><a class="outline" href="/">놀이 고르기</a></section></main><script src="/practice-bank.js"></script><script src="/practice.js"></script></body></html>
+<section id="flashStudy" class="flash-study" hidden>
+<div class="question-top"><span id="flashTopic" class="chip"></span><span id="flashProgress"></span><span class="flash-label">우리말 카드</span></div>
+<p class="flash-instruction">먼저 떠올려 보고, 카드를 눌러 확인해요.</p>
+<button id="flashCard" class="flash-card" aria-expanded="false" aria-describedby="flashInstruction">
+<span id="flashSide" class="flash-side">앞면 · 생각해 보기</span>
+<span id="flashQuestion" class="flash-question"></span>
+<span id="flashBack" hidden><strong id="flashAnswer" class="flash-answer"></strong><span id="flashExplanation" class="flash-explanation"></span></span>
+<span id="flashInstruction" class="flash-flip">눌러서 정답과 풀이 보기 ↻</span>
+</button>
+<div class="flash-tools"><button id="flashHelp" class="quiet">도움말 보기</button><button id="flashMark" class="outline" aria-pressed="false">☆ 다시 볼 카드</button></div>
+<p id="flashHint" class="hint" hidden></p>
+<nav class="flash-nav" aria-label="카드 이동"><button id="flashPrev" class="quiet">← 이전</button><button id="flashNext" class="primary">다음 카드 →</button></nav>
+<p id="flashStatus" class="answer-status" role="status"></p><button id="flashQuit" class="text-button">배울 내용 다시 고르기</button>
+</section><section id="finish" class="waiting-card" hidden><h1 id="finishTitle">우리말 배움 한 걸음!</h1><p id="summary"></p><div id="review"></div><button id="reviewCards" class="outline" hidden>다시 볼 카드만 보기</button><button id="again" class="primary">다시 풀기</button><a class="outline" href="/">놀이 고르기</a></section></main><script src="/practice-bank.js"></script><script src="/practice.js"></script></body></html>
 

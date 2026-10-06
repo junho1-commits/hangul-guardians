@@ -1,13 +1,13 @@
 'use strict';
 const {spawn}=require('node:child_process'),assert=require('node:assert/strict');
-const {chromium}=require('C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const {chromium}=require('C:/Users/PC-1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const child=spawn(process.execPath,['server.js'],{env:{...process.env,PORT:'3117'},stdio:'ignore'});
 (async()=>{let browser;try{
 for(let i=0;i<40;i++){try{if((await fetch('http://localhost:3117/api/health')).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
 browser=await chromium.launch({channel:'msedge',headless:true});
 const page=await browser.newPage({viewport:{width:1280,height:800}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto('http://localhost:3117/');assert.equal(await page.locator('.mode-card').count(),3);await page.screenshot({path:'tests/screenshots/12-modes.png'});
-await page.goto('http://localhost:3117/learn');await page.locator('#begin').waitFor({state:'visible'});await page.waitForFunction(()=>!document.querySelector('#begin').disabled);await page.selectOption('#category','맞춤법');await page.click('#begin');await page.click('#help');assert.equal(await page.locator('#hint').isVisible(),true);assert.equal(await page.locator('#time').textContent(),'천천히 풀어요');await page.click('#options button');assert.equal(await page.locator('#explanation').isVisible(),true);await page.screenshot({path:'tests/screenshots/13-learn.png'});
+await page.goto('http://localhost:3117/learn');await page.locator('#begin').waitFor({state:'visible'});await page.waitForFunction(()=>!document.querySelector('#begin').disabled);await page.selectOption('#category','맞춤법');await page.click('#begin');await page.click('#flashHelp');assert.equal(await page.locator('#flashHint').isVisible(),true);assert.equal(await page.locator('#flashBack').isVisible(),false);await page.click('#flashCard');assert.equal(await page.locator('#flashBack').isVisible(),true);await page.click('#flashMark');await page.click('#flashNext');assert.equal(await page.locator('#flashBack').isVisible(),false);await page.click('#flashPrev');assert.equal(await page.locator('#flashMark').getAttribute('aria-pressed'),'true');await page.click('#flashCard');await page.screenshot({path:'tests/screenshots/13-learn.png'});
 await page.goto('http://localhost:3117/solo');await page.waitForFunction(()=>!document.querySelector('#begin').disabled);await page.click('#begin');assert.equal(await page.locator('#help').isVisible(),false);
 await page.evaluate(()=>deadline=Date.now()-1);await page.waitForFunction(()=>!document.querySelector('#next').hidden);assert.match(await page.locator('#feedback').textContent(),/시간/);await page.click('#next');
 for(let i=1;i<12;i++){await page.click('#options button:first-child');await page.click('#next');}

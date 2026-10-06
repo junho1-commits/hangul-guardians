@@ -2,7 +2,7 @@
 const {spawn}=require('node:child_process');
 const path=require('node:path');
 const assert=require('node:assert/strict');
-const {chromium}=require('C:/Users/cho/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const {chromium}=require('C:/Users/PC-1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const root=path.resolve(__dirname,'..');let browser;
 const server=spawn(process.execPath,['server.js'],{cwd:root,env:{...process.env,PORT:'3106'},stdio:'ignore'});
 async function main(){

@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),path=require('node:path'),fs=require('node:fs');
 const {spawn}=require('node:child_process');
-const runtime=process.env.CODEX_NODE_MODULES||'C:/Users/cho/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules';
+const runtime=process.env.CODEX_NODE_MODULES||'C:/Users/PC-1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules';
 const {chromium}=require(path.join(runtime,'playwright'));
 const {io}=require('socket.io-client');
 const bank=require('../questions');
@@ -37,15 +37,15 @@ async function main(){
   await host.locator('#start').click();await host.locator('#cinematic').waitFor({state:'visible'});
   await pupils[0].waitForFunction(()=>document.querySelector('#waitingTitle').textContent.includes('전자칠판'));
   await host.locator('#skip').click();await host.locator('#questionPanel').waitFor({state:'visible'});
-  await host.locator('#pause').click();await pupils[0].waitForFunction(()=>document.querySelector('#playerTimer').textContent==='일시 정지');
+  await host.locator('#pause').click();await pupils[0].waitForFunction(()=>document.querySelector('#playerTimer').textContent==='잠시 멈춤');
   assert.equal(await pupils[0].locator('.player-option:disabled').count(),4);
   await host.locator('#showHint').click();await pupils[0].locator('#playerHint').waitFor({state:'visible'});
   await host.locator('#pause').click();await pupils[0].waitForFunction(()=>document.querySelectorAll('.player-option:not(:disabled)').length===4);
   await host.screenshot({path:path.join(output,'05-battle.png')});await pupils[0].screenshot({path:path.join(output,'06-student-question.png')});
   const question=await host.evaluate(()=>state.question);assert.equal(question.answer,undefined);
   const original=bank.find(q=>q.id===question.id),answer=question.options.indexOf(original.options[original.answer]);
-  await pupils[0].locator('.player-option').nth(answer).click();await pupils[0].waitForFunction(()=>document.querySelector('#answerStatus').textContent.includes('제출 완료'));
-  await pupils[0].reload();await pupils[0].waitForFunction(()=>document.querySelector('#answerStatus').textContent.includes('제출 완료'));assert.equal(await pupils[0].locator('.player-option.selected').count(),1);
+  await pupils[0].locator('.player-option').nth(answer).click();await pupils[0].waitForFunction(()=>document.querySelector('#answerStatus').textContent.includes('답 보내기 완료'));
+  await pupils[0].reload();await pupils[0].waitForFunction(()=>document.querySelector('#answerStatus').textContent.includes('답 보내기 완료'));assert.equal(await pupils[0].locator('.player-option.selected').count(),1);
   await pupils[1].locator('.player-option').nth((answer+1)%4).click();await pupils[2].locator('.player-option').nth(answer).click();
   await host.waitForFunction(()=>state.phase==='review');await pupils[1].locator('#playerExplanation').waitFor({state:'visible'});
   assert.equal(await host.evaluate(()=>state.roundCorrect),2);assert.equal(await host.evaluate(()=>state.shield),96);

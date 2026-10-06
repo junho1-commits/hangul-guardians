@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: hangul-guardians
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev && node scripts/export-practice.cjs
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22
