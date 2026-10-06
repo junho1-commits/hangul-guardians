@@ -46,3 +46,15 @@
 .flash-study{padding:12px 0}.flash-label{margin-left:auto;color:var(--gold);font-size:12px}.flash-instruction{text-align:center;color:var(--muted);font-size:14px;line-height:1.7;margin:20px 0}.flash-card{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:340px;padding:30px 24px;border:2px solid #eed49a;border-radius:24px;background:linear-gradient(145deg,#fff8e8,#f1dfb8);color:#302619;box-shadow:0 12px 32px #0005,5px 5px 0 #a88d57;transition:background .2s,transform .2s;overflow-wrap:anywhere}.flash-card:hover{transform:translateY(-2px)}.flash-side{font-size:12px;letter-spacing:.08em;color:#716044;margin-bottom:24px}.flash-question{font-size:clamp(22px,4vw,28px);font-weight:800;line-height:1.6;word-break:keep-all}.flash-flip{margin-top:26px;font-size:13px;color:#716044}.flash-card.is-back{background:linear-gradient(145deg,#e3faf1,#bfe3d7);border-color:#9adebe}.flash-card.is-back .flash-question{font-size:17px;color:#405d50;margin-bottom:20px}.flash-answer{display:block;font-size:32px;line-height:1.5;color:#15563c;margin-bottom:16px}.flash-explanation{display:block;font-size:17px;line-height:1.8;color:#294b3e}.flash-tools,.flash-nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}.flash-tools button{font-size:12px;padding:11px 12px}.flash-nav button{flex:1}.flash-study .text-button{display:block;margin:auto}#reviewCards{margin-bottom:12px}@media(max-width:360px){.flash-card{padding:24px 18px}.flash-tools{flex-wrap:wrap}.flash-tools button{flex:1}}
 
 @media(min-width:761px){.mode-grid.teacher-modes{grid-template-columns:repeat(2,1fr)}}
+/* 대기실: 글과 캐릭터를 서로 다른 행에 배치해 얼굴을 가리지 않습니다. */
+.lobby{grid-template-columns:minmax(0,1fr) minmax(290px,340px);grid-template-rows:auto auto;gap:20px 5%;align-content:start;padding:28px 4%;min-height:calc(100dvh - 110px);overflow:visible}
+.lobby-copy{grid-column:1;grid-row:1;max-width:none;margin:0}
+.lobby h1{font-size:clamp(36px,3.4vw,54px);margin:14px 0;line-height:1.2}
+.lobby .lede{font-size:clamp(15px,1.2vw,19px);line-height:1.65;margin-bottom:0}
+.lobby-actions{margin-top:20px;flex-wrap:wrap}
+.lobby-meta{margin-top:12px}
+.lobby-art{display:flex;position:relative;inset:auto;grid-column:1;grid-row:2;justify-content:center;align-items:flex-start;width:100%;max-width:none;opacity:1;margin:0;pointer-events:none}
+.lobby-art img{width:auto;max-width:100%;height:clamp(220px,32vh,340px);object-fit:contain;display:block}
+.lobby .join-card{grid-column:2;grid-row:1 / span 2;align-self:start;width:100%;max-width:none}
+@media(max-height:820px) and (min-width:901px){.lobby{padding:20px 4%;gap:14px 4%}.lobby h1{font-size:40px;margin:12px 0}.lobby-actions{margin-top:16px}.lobby-art img{height:220px}.lobby-art{width:100%;inset:auto}}
+@media(max-width:900px){.lobby{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;padding:24px;gap:24px}.lobby-copy{grid-column:1;grid-row:1}.lobby-art{grid-column:1;grid-row:2;display:flex}.lobby-art img{height:auto;width:100%;max-width:480px}.lobby .join-card{grid-column:1;grid-row:3;max-width:480px;margin:auto}.lobby h1{font-size:clamp(32px,6vw,44px)}}
