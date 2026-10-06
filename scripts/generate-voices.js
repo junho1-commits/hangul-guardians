@@ -27,7 +27,7 @@ async function main() {
   if (!key) throw new Error('TYPECAST_API_KEY 환경변수가 필요합니다.');
   const manifestPath = path.join(root, 'public/audio/manifest.json');
   const manifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath,'utf8')) : {provider:'Typecast',model:'ssfm-v30',voices,clips:{}};
-  for (const clip of [...script.scenes, ...script.effects]) {
+  for (const clip of [...script.scenes, ...script.effects].filter(c=>!process.argv.includes('--only-boss')||c.id.startsWith('boss-stage-'))) {
     const voice = voices[clip.role];
     const hash = crypto.createHash('sha256').update(JSON.stringify([clip.text,voice.id,clip.emotion])).digest('hex');
     const file = path.join(root, 'public/audio', clip.id + '.wav');

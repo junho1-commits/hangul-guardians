@@ -78,3 +78,7 @@
 .lobby .join-card{grid-column:2;grid-row:1 / span 2;align-self:start}
 }
 @media(max-width:900px){.lobby-art img{max-width:650px}}
+/* 단계별 괴물 성장: 문제 영역을 침범하지 않고 점점 커집니다. */
+.battle{--boss-size:65%}.battle[data-stage="1"]{--boss-size:82%}.battle[data-stage="2"]{--boss-size:100%}
+.fighter.enemy{justify-content:flex-end}.fighter.enemy .sprite{height:var(--boss-size);transition:height .8s ease,width .8s ease}
+@media(max-width:900px){.arena-characters{position:relative;height:280px;bottom:auto;margin-top:22px}.battle{padding-bottom:110px}}

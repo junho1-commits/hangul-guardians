@@ -23,6 +23,7 @@ function render(s){
   percent('hpBar',s.hp);$('hpValue').textContent=`남은 먹물 ${Math.ceil(s.hp)}%`;
   percent('shieldBar',s.shield);$('shieldValue').textContent=Math.ceil(s.shield)+'%';$('teamCount').textContent=`우리 반 ${s.players.filter(p=>p.connected).length}명 · 모든 정답이 하나의 힘으로`;
   percent('sejongBar',s.sejong);percent('juBar',s.ju);$('combo').textContent=s.combo>=3?s.combo+' 연속 정답!':'';
+  $('battle').dataset.stage=s.stage;
   $('bossSprite').style.filter=s.stage===1?'hue-rotate(45deg)':s.stage===2?'hue-rotate(-25deg)':'none';
   if(s.phase==='waiting'){
     $('questionText').textContent='다시 연결되면 이어서 출발합니다.';$('hostOptions').replaceChildren();$('category').textContent='지킴이 연결 대기';$('roundLabel').textContent='';$('submitted').textContent='학생 기기의 연결을 확인해 주세요.';$('reviewStatus').textContent='';show('hint',false);
@@ -43,6 +44,7 @@ function render(s){
     const entries=[['함께 맞힌 답',s.stats.correct],['최고 연속 정답',s.stats.maxCombo],['우리 반 대원',s.players.length]];
     const frag=document.createDocumentFragment();for(const [label,n]of entries){const d=document.createElement('div'),strong=document.createElement('strong'),small=document.createElement('span');strong.textContent=n;small.textContent=label;d.append(strong,small);frag.append(d);}$('stats').replaceChildren(frag);$('resultAction').textContent=win?'새로운 한글 지키기':'다시 도전하기';
   }
+  if(previousPhase==='intro'&&s.phase==='question')sound.playVoice('/audio/boss-stage-1.wav');
   previousPhase=s.phase;
 }
 const headings={peace:['1446 · 마음을 전하는 글자','소중한 글자, 한글'],danger:['집현전 보호막 이상','글자가 사라지고 있다!'],boss:['훈민정음을 노리는 어둠','먹물 도깨비 등장'],sejong:['글자를 만드는 힘','세종대왕'],ju:['우리 말과 글의 지킴이','주시경 선생님'],challenge:['보호막이 무너지고 있습니다','함께할 힘이 필요해!'],summon:['그대들의 지혜를 모아 주시오','한글 지킴이, 모여라!'],team:['모든 정답이 하나의 힘으로','우리 반 모두가 주인공'],title:['세종 · 주시경의 우리말 대작전','한글 지킴이']};
@@ -87,7 +89,7 @@ socket.on('effect',async e=>{
     show('skill',true);sound.summon();const generation=++skillGeneration;clearTimeout(skillTimer);skillTimer=setTimeout(()=>show('skill',false),5500);
     await sound.playVoice('/audio/skill-sejong.wav');if(generation===skillGeneration)await sound.playVoice('/audio/skill-ju.wav');
   }
-  if(e.type==='stage'){sound.summon();toast('새로운 괴물가 나타났어요! 함께 먹물을 지워요.');}
+  if(e.type==='stage'){sound.summon();sound.playVoice('/audio/boss-stage-'+(e.stage+1)+'.wav');toast('더 커진 괴물이 나타났어요! 함께 먹물을 지워요.');}
   if(e.type==='victory')sound.playVoice('/audio/victory.wav');if(e.type==='defeat')sound.playVoice('/audio/retry.wav');
 });
 window.addEventListener('voice-error',()=>toast('음성을 재생하지 못했어요. 소리 켜기를 눌러 주세요.'));

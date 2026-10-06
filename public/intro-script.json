@@ -102,6 +102,27 @@
       "role": "ju",
       "text": "괜찮습니다. 틀린 문제의 풀이를 함께 살펴보고, 다시 도전해 봅시다!",
       "emotion": "normal"
+    },
+    {
+      "id": "boss-stage-1",
+      "speaker": "괴물",
+      "role": "boss",
+      "text": "크하하! 나는 먹물 괴물! 너희가 바른 말을 찾을 수 있을까?",
+      "emotion": "toneup"
+    },
+    {
+      "id": "boss-stage-2",
+      "speaker": "괴물",
+      "role": "boss",
+      "text": "이번에는 뒤죽박죽 도깨비다! 더 커진 내 힘을 막아 보아라!",
+      "emotion": "toneup"
+    },
+    {
+      "id": "boss-stage-3",
+      "speaker": "괴물",
+      "role": "boss",
+      "text": "나는 깜빡깜빡 괴물! 가장 강한 나를 이겨야 한글을 지킬 수 있다!",
+      "emotion": "toneup"
     }
   ]
 }

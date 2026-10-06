@@ -123,6 +123,30 @@
       "text": "괜찮습니다. 틀린 문제의 풀이를 함께 살펴보고, 다시 도전해 봅시다!",
       "role": "ju",
       "voice": "지훈"
+    },
+    "boss-stage-1": {
+      "file": "/audio/boss-stage-1.wav",
+      "duration": 7.35,
+      "hash": "a18f4524fcc8671038b3668d5fb56314e0ec41d2ddd1cb2c58ff758f05ff999a",
+      "text": "크하하! 나는 먹물 괴물! 너희가 바른 말을 찾을 수 있을까?",
+      "role": "boss",
+      "voice": "찬구"
+    },
+    "boss-stage-2": {
+      "file": "/audio/boss-stage-2.wav",
+      "duration": 6.5,
+      "hash": "0f50a20a149defa4f346fee60af5227890e406f2a6582a7ae207844b66520883",
+      "text": "이번에는 뒤죽박죽 도깨비다! 더 커진 내 힘을 막아 보아라!",
+      "role": "boss",
+      "voice": "찬구"
+    },
+    "boss-stage-3": {
+      "file": "/audio/boss-stage-3.wav",
+      "duration": 8.55,
+      "hash": "23d028df355238b021f8e79dde15553e52c10bf9cba02209a607d5b01c78c59c",
+      "text": "나는 깜빡깜빡 괴물! 가장 강한 나를 이겨야 한글을 지킬 수 있다!",
+      "role": "boss",
+      "voice": "찬구"
     }
   }
 }
