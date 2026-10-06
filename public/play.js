@@ -1,4 +1,7 @@
 'use strict';
+const fromTeacher=new URLSearchParams(location.search).get('role')==='teacher';
+if(fromTeacher){for(const link of document.querySelectorAll('a[href="/play"]'))link.href='/host';}
+
 const $=id=>document.getElementById(id),socket=io();
 const show=(id,v)=>$(id).hidden=!v;
 let state=null,identity=null,choice=null,roundId='',eligible=true,submitting=false,clockOffset=0,toastTimer;
@@ -10,7 +13,7 @@ function join(data){socket.emit('join',data,r=>{submitting=false;$('joinButton')
   identity={pin:r.pin,name:r.name,token:r.token};sessionStorage.setItem(storageKey,JSON.stringify(identity));show('joinScreen',false);show('playerGame',true);$('playerName').textContent=r.name;$('playerPin').textContent='입장 번호 '+r.pin;$('joinError').textContent='';
 });}
 $('joinForm').onsubmit=e=>{e.preventDefault();if(!socket.connected){$('joinError').textContent='서버 연결을 기다려 주세요.';return;}if(submitting)return;submitting=true;$('joinButton').disabled=true;join({pin:$('pinInput').value,name:$('nameInput').value});};
-$('leave').onclick=()=>{if(confirm('현재 지킴이를 나가고 다른 대기실로 입장할까요?')){sessionStorage.removeItem(storageKey);location.href='/play';}};
+$('leave').onclick=()=>{if(confirm('현재 지킴이를 나가고 다른 대기실로 입장할까요?')){sessionStorage.removeItem(storageKey);location.href=fromTeacher?'/play?join=1&role=teacher':'/play?join=1';}};
 socket.on('connect',()=>{$('connection').textContent='연결됨';$('connection').classList.remove('offline');if(identity)join(identity);});
 socket.on('disconnect',()=>{$('connection').textContent='재연결 중';$('connection').classList.add('offline');for(const b of $('playerOptions').children)b.disabled=true;toast('자동으로 다시 연결하고 있어요. 답은 보존됩니다.');});
 socket.on('personal',p=>{choice=p.answer;eligible=p.eligible;if(state)render(state);});

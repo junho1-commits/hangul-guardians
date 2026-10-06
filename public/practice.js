@@ -1,5 +1,6 @@
 'use strict';
 const $=id=>document.getElementById(id),learning=location.pathname.replace(/\/$/,'')==='/learn'||new URLSearchParams(location.search).get('mode')==='learn';
+if(new URLSearchParams(location.search).get('role')==='teacher'){for(const link of document.querySelectorAll('a[href="/"],a[href="./"]'))link.href='/host';}
 let flipped=false,seen=new Set(),marked=new Set();
 let bank=[],questions=[],index=0,correct=0,mistakes=[],answered=false,deadline=0,timer;
 const show=(id,value)=>$(id).hidden=!value;
