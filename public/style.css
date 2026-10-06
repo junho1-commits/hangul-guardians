@@ -82,3 +82,19 @@
 .battle{--boss-size:65%}.battle[data-stage="1"]{--boss-size:82%}.battle[data-stage="2"]{--boss-size:100%}
 .fighter.enemy{justify-content:flex-end}.fighter.enemy .sprite{height:var(--boss-size);transition:height .8s ease,width .8s ease}
 @media(max-width:900px){.arena-characters{position:relative;height:280px;bottom:auto;margin-top:22px}.battle{padding-bottom:110px}}
+/* 전투는 화면 안에서 문제·캐릭터·안내·버튼을 순서대로 배치합니다. */
+.host .battle{height:calc(100dvh - 80px);min-height:0;display:grid;grid-template-rows:auto auto minmax(0,1fr) auto auto;gap:10px;padding:12px 3%}
+.host .battle-hud{align-items:center;padding:0}.host .shield-card{padding:8px 12px}.host .shield-card .bar{margin:6px 0}
+.host .question-panel{margin:0 auto;width:73%;padding:12px 20px}.host .question-panel h2{margin:8px 0}.host .question-footer{margin-top:8px}
+.host .arena-characters{position:relative;inset:auto;min-height:0;height:auto;margin:0}
+.host .fighter{justify-content:flex-end}.host .fighter .sprite{height:calc(100% - 38px)}
+.host .fighter.enemy .sprite{height:calc((100% - 70px) * .65)}
+.host .battle[data-stage="1"] .fighter.enemy .sprite{height:calc((100% - 70px) * .82)}
+.host .battle[data-stage="2"] .fighter.enemy .sprite{height:calc(100% - 70px)}
+.host .fighter.enemy .boss-info{width:100%;max-width:300px;text-align:center;background:#081a30dd;border-radius:10px;padding:6px 12px;margin-bottom:7px;flex-shrink:0}
+.host .boss-info h2{font-size:18px;margin:0 0 4px}.host .boss-info .bar{width:100%;margin:0 0 3px}.host .boss-info>span:last-child{font-size:11px}
+.energy-guide{margin:0;text-align:center;font-size:12px;line-height:1.5;color:#ffe3a0;background:#081a30c9;border-radius:8px;padding:6px 12px}
+.host .teacher-controls{position:relative;inset:auto;min-height:44px}.host #next{margin-top:0}
+@media(max-height:820px) and (min-width:901px){.host .battle{height:calc(100dvh - 65px);gap:7px}.host .question-panel h2{font-size:20px}.host .host-option{padding:5px 10px}.host .hint{padding:5px 10px;margin-top:7px}}
+@media(max-width:900px){.host .battle{height:calc(100dvh - 80px);gap:7px;padding:10px 2%}.host .question-panel{width:100%;padding:10px 14px}.host .host-options{grid-template-columns:1fr 1fr}.host .fighter-label{font-size:12px}.host .shield-card{width:42%}.energy-guide{font-size:11px}.host .boss-info h2{font-size:15px}.host .teacher-controls{flex-wrap:wrap}.host .question-panel h2{font-size:20px}}
+@media(max-width:500px){.host .battle{height:auto;min-height:calc(100dvh - 80px);grid-template-rows:auto auto 230px auto auto}.host .host-options{grid-template-columns:1fr}.host .battle-hud>.eyebrow{font-size:10px}}
